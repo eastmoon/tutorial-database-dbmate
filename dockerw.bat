@@ -197,8 +197,6 @@ goto end
     echo Go into container.
     echo.
     echo Options:
-    echo      --web             Into website container.
-    echo      --alg             Into algorithm container.
     echo.
     goto end
 )
