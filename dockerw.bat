@@ -134,7 +134,7 @@ goto end
 )
 
 :cli-start (
-    echo ^> Build ebook Docker images with gitbook tools
+    echo ^> Build ebook Docker images
     docker build --rm^
         -t mysql:%PROJECT_NAME%^
         .\docker\mysql
