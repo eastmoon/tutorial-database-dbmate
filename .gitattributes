@@ -3,6 +3,7 @@
 *.ini   text eol=crlf
 *.bat   text eol=crlf
 *.sh    text eol=lf
+*.rc    text eol=lf
 *.json  eol=lf
 *.c     eol=lf
 *.cpp   eol=lf

@@ -15,9 +15,10 @@ services:
       MYSQL_USER: demo
       MYSQL_PASSWORD: demops
       MYSQL_DATABASE: demo_db
-      DATABASE_URL: "mysql://demo:demops@mysql:3306/demo_db"
+      DATABASE_URL: "mysql://root:rootps@mysql:3306/demo_db"
     volumes:
       - ../db/:/db/
+      - ../src/:/repo/
     networks:
       - service_network
 

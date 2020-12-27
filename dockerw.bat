@@ -118,6 +118,8 @@ goto end
     echo      start             Start service with docker compose.
     echo      down              Stop service with docker compose.
     echo      into              Go into container.
+    echo      up                Call dbmate up.
+    echo      status            Call dbmate status.
     echo.
     echo Run 'cli [COMMAND] --help' for more information on a command.
     goto end
@@ -195,9 +197,42 @@ goto end
 
 :cli-into-help (
     echo Go into container.
-    echo.
-    echo Options:
-    echo.
+    goto end
+)
+
+:: ------------------- Command "up" mathod -------------------
+
+:cli-up (
+    echo ^> Go into container with stdout
+    docker exec -ti demo_service_mysql_%PROJECT_NAME% bash -l -c "cd /repo && source integrate.sh && cd / && dbmate up"
+
+    goto end
+)
+
+:cli-up-args (
+    goto end
+)
+
+:cli-up-help (
+    echo Call dbmate up
+    goto end
+)
+
+:: ------------------- Command "status" mathod -------------------
+
+:cli-status (
+    echo ^> Go into container with stdout
+    docker exec -ti demo_service_mysql_%PROJECT_NAME% bash -l -c "cd / && dbmate status"
+
+    goto end
+)
+
+:cli-status-args (
+    goto end
+)
+
+:cli-status-help (
+    echo Call dbmate status
     goto end
 )
 
