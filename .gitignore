@@ -1,5 +1,5 @@
 # Project folder
-schema.sql
+db/
 .env
 
 # third-party library
