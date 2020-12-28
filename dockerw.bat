@@ -144,7 +144,10 @@ goto end
 
     echo ^> Startup docker container instance
     @rem Run next deveopment with stdout
-    docker-compose -f ./docker/docker-compose-%PROJECT_ENV%.yml up -d
+    if NOT EXIST .\docker\docker-compose-%PROJECT_ENV%.yml (
+        copy .\docker\docker-compose.yml.example .\docker\docker-compose-%PROJECT_ENV%.yml
+    )
+    docker-compose -f .\docker\docker-compose-%PROJECT_ENV%.yml up -d
 
     goto end
 )
@@ -224,7 +227,6 @@ goto end
     echo ^> Go into container with stdout
     docker exec -ti demo_service_mysql_%PROJECT_NAME% bash -l -c "cd / && dbmate status"
     docker exec -ti demo_service_mysql_%PROJECT_NAME% bash -l -c "echo 'SHOW TABLES;' | mysql -u demo --password=demops --database=demo_db -t"
-
 
     goto end
 )

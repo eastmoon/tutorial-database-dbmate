@@ -1,0 +1,27 @@
+# Docker-Compose document
+# Ref : https://docs.docker.com/compose/compose-file/
+
+version: "3"
+services:
+  mysql:
+    image: mysql:${TAG}
+    container_name: demo_service_mysql_${TAG}
+    restart: always
+    ports:
+      - "3306:3306"
+      - "33060:33060"
+    environment:
+      MYSQL_ROOT_PASSWORD: rootps
+      MYSQL_USER: demo
+      MYSQL_PASSWORD: demops
+      MYSQL_DATABASE: demo_db
+      DATABASE_URL: "mysql://root:rootps@mysql:3306/demo_db"
+    volumes:
+      - ../db/:/db/
+      - ../src/:/repo/
+    networks:
+      - service_network
+
+networks:
+  service_network:
+    driver: bridge
