@@ -8,7 +8,11 @@ fi
 mkdir -p $MIGRATION_PATH
 
 # Integrate model with file "integrate.rc"
-filename='integrate.rc'
+FILENAME='integrate.rc'
+if [ ! -f $FILENAME ]; then
+    echo "copy by example file"
+    cp $FILENAME.example $FILENAME
+fi
 while IFS=$'\n' read -r line || [[ -n "$line" ]]; do
     if [ -d "./$line" ]; then
         echo "> copy $line to migrateions"
@@ -21,4 +25,4 @@ while IFS=$'\n' read -r line || [[ -n "$line" ]]; do
             cp ./$line/test/* $MIGRATION_PATH
         fi
     fi
-done < $filename
+done < $FILENAME
