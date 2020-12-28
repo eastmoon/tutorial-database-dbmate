@@ -223,6 +223,8 @@ goto end
 :cli-status (
     echo ^> Go into container with stdout
     docker exec -ti demo_service_mysql_%PROJECT_NAME% bash -l -c "cd / && dbmate status"
+    docker exec -ti demo_service_mysql_%PROJECT_NAME% bash -l -c "echo 'SHOW TABLES;' | mysql -u demo --password=demops --database=demo_db -t"
+
 
     goto end
 )
