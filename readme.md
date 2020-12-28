@@ -29,6 +29,17 @@ dockerw down
 dockerw into
 ```
 
++ 進入容器
+```
+dockerw up
+```
+> 依據專案相依設定合併 migrations 目標，並執行 ```dbmate up```
+
++ 檢查遷移狀態
+```
+dockerw status
+```
+
 ## DBmate 操作
 
 + DBmate 執行資料遷移
